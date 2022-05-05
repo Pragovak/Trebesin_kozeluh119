@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{Databáze voličů}
+\author{ Jakub Koželuh, Martin Dvořák, David Edrees }
+\date{08. 11. 2021}
+\maketitle
+
+\begin{abstract}
+Tento dokument byl vypracovaný společně se všemi členy týmu a ověřuje základní znalosti \LaTeX{}, databází a projektového řízení.
+
+Tým pracoval samostatně a využíval všechny dostupné materiály na Moodle nebo internetu. Veškeré licenční a právní náležitosti jsou upraveny v tomto dokumentu.
+
+Těm, který není tento dokument určen nemají žádné právo na využití obsahu tohoto dokumentu.
+
+Veškerá data osob a předmětů jsou smyšlená a nezakládají se na skutečnosti.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+
+\section{Popis databáze}
+Databáze obsahuje citlivá data o hráčích. Zároveň v tabulkách je definice skupin hráčů, které hry nejčastěji hrají.
+
+Databáze je vytvořena na jazyce MySQL a využívá veškeré technologické vlastnosti této DB.
+\newpage
+\section{Licenční informace a HW požadavky}
+\subsection{Licence}
+Microsoft Edge © 2021 Microsoft Corporation. Všechna práva vyhrazena.
+\subsection{Hardware}
+\subsection{Software}
+PGModeler
+
+
+\newpage
+\section{Enumerizace hodnot}
+\subsection{Normované enumerizace}
+\subsection{Custom enumerizace}
+\newpage
+\section{Databázová struktura}
+\subsection{ER diagram}
+\includegraphics[widht=15cm, height=9cm]{ict_skupinaD_3F}
+\subsection{Tabulka Games}
+Základní informace o hře 
+\subsubsection{Provázání tabulky}
+Tabulka je provázana s tabulkou game developers a players
+\subsection{Tabulka game_developers}
+Informace o vydavateli hry
+\subsubsection{Provázání tabulky}
+Tabulka je provázana s tabulkou Games
+\subsection{Tabulka Players}
+Informace o vydavateli o hráči hry
+\subsubsection{Provázání tabulky}
+Tabulka je provázana s tabulkou Games a platforms
+\subsection{Tabulka Platforms}
+Informace na jakých platformách hráči hrajou
+\subsubsection{Provázání tabulky}
+Tabulka je provázana s tabulkou Players
+
+
+\end{document}
