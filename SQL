@@ -1,0 +1,84 @@
+CREATE DATABASE new_database;
+-- ddl-end --
+
+
+-- object: public.games | type: TABLE --
+-- DROP TABLE IF EXISTS public.games CASCADE;
+CREATE TABLE public.games (
+	game_name varchar(40),
+	game_id smallint NOT NULL,
+	game_developer varchar(40),
+	age_category varchar(2),
+	player_id_players smallint,
+	developer_id_game_developers smallint,
+	player_id_players1 smallint,
+	developer_id_game_developers1 smallint,
+	CONSTRAINT games_pk PRIMARY KEY (game_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.games OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.players | type: TABLE --
+-- DROP TABLE IF EXISTS public.players CASCADE;
+CREATE TABLE public.players (
+	player_name varchar(40),
+	"Ip_adress" varchar(15),
+	player_id smallint NOT NULL,
+	player_age varchar(2),
+	CONSTRAINT players_pk PRIMARY KEY (player_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.players OWNER TO postgres;
+-- ddl-end --
+
+-- object: players_fk | type: CONSTRAINT --
+-- ALTER TABLE public.games DROP CONSTRAINT IF EXISTS players_fk CASCADE;
+ALTER TABLE public.games ADD CONSTRAINT players_fk FOREIGN KEY (player_id_players1)
+REFERENCES public.players (player_id) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: public.game_developers | type: TABLE --
+-- DROP TABLE IF EXISTS public.game_developers CASCADE;
+CREATE TABLE public.game_developers (
+	developer_id smallint NOT NULL,
+	company_name varchar(30),
+	date_of_establishment date,
+	eployees varchar(10),
+	CONSTRAINT game_developers_pk PRIMARY KEY (developer_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.game_developers OWNER TO postgres;
+-- ddl-end --
+
+-- object: game_developers_fk | type: CONSTRAINT --
+-- ALTER TABLE public.games DROP CONSTRAINT IF EXISTS game_developers_fk CASCADE;
+ALTER TABLE public.games ADD CONSTRAINT game_developers_fk FOREIGN KEY (developer_id_game_developers1)
+REFERENCES public.game_developers (developer_id) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: public.platforms | type: TABLE --
+-- DROP TABLE IF EXISTS public.platforms CASCADE;
+CREATE TABLE public.platforms (
+	platform_name varchar(20),
+	platform_id smallint NOT NULL,
+	platform_type varchar(20),
+	platform_performance varchar(20),
+	player_id_players smallint,
+	CONSTRAINT platforms_pk PRIMARY KEY (platform_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.platforms OWNER TO postgres;
+-- ddl-end --
+
+-- object: players_fk | type: CONSTRAINT --
+-- ALTER TABLE public.platforms DROP CONSTRAINT IF EXISTS players_fk CASCADE;
+ALTER TABLE public.platforms ADD CONSTRAINT players_fk FOREIGN KEY (player_id_players)
+REFERENCES public.players (player_id) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
